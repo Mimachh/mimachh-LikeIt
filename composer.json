@@ -1,0 +1,27 @@
+{
+    "name": "mimachh/like-it",
+    "description": "Add like feature to your Laravel app easily",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Mimachh\\LikeIt\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Mimachh\\LikeIt\\LikeItServiceProvider"
+          ]
+        }
+      },
+    "authors": [
+        {
+            "name": "Karl",
+            "email": "karl.mullr@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "version": "0.1.1",
+    "require": {}
+}
