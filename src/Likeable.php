@@ -1,6 +1,6 @@
 <?php
 
-namespace Mimachh\Traits\LikeIt;
+namespace Mimachh\LikeIt;
 
 use Mimachh\Guardians\Models\Like;
 
