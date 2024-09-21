@@ -12,6 +12,25 @@ class LikeController extends Controller
         $this->middleware('auth');  // Appliquer le middleware d'authentification à toutes les méthodes
     }
 
+    public function hasLike($type, $id)
+    {
+        $auth = auth()->user();
+
+        if (!$auth) {
+            return response()->json(['hasLiked' => false], 401);
+        }
+
+        $model = $this->getModel($type, $id);
+
+        if (!$model) {
+            return response()->json(['hasLiked' => false], 404);
+        }
+
+        $hasLiked = $model->hasLike($auth->id());
+
+        return response()->json(['hasLiked' => $hasLiked]);
+    }
+    
     public function like($type, $id)
     {
         $auth = auth()->user();
