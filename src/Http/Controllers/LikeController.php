@@ -2,10 +2,16 @@
 
 namespace Mimachh\LikeIt\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller; 
 
 class LikeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');  // Appliquer le middleware d'authentification à toutes les méthodes
+    }
+
     public function like($type, $id)
     {
         $auth = auth()->user();
@@ -49,6 +55,8 @@ class LikeController extends Controller
      */
     public function toggleLike($type, $id)
     {
+        $auth = auth()->user();
+     
         $model = $this->getModel($type, $id);
         
         if (!$model) {
@@ -56,7 +64,7 @@ class LikeController extends Controller
         }
 
         // Appeler la méthode toggleLike sur le modèle
-        $model->toggleLike(auth()->id());
+        $model->toggleLike($auth->id);
 
         return response()->json(['message' => 'Toggled like successfully']);
     }
