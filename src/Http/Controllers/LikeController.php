@@ -40,6 +40,27 @@ class LikeController extends Controller
         return response()->json(['message' => 'Unliked successfully']);
     }
 
+        /**
+     * Alterner entre like et unlike pour un modèle spécifique.
+     *
+     * @param  string  $type
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function toggleLike($type, $id)
+    {
+        $model = $this->getModel($type, $id);
+        
+        if (!$model) {
+            return response()->json(['error' => 'Modèle non trouvé.'], 404);
+        }
+
+        // Appeler la méthode toggleLike sur le modèle
+        $model->toggleLike(auth()->id());
+
+        return response()->json(['message' => 'Toggled like successfully']);
+    }
+    
     protected function getModel($type, $id)
     {
         $modelClass = 'App\\Models\\' . ucfirst($type);
