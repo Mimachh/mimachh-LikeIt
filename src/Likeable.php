@@ -2,7 +2,7 @@
 
 namespace Mimachh\LikeIt;
 
-use Mimachh\Guardians\Models\Like;
+use Mimachh\LikeIt\Models\Like;
 
 trait Likeable
 {
