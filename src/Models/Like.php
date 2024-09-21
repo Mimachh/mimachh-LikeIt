@@ -1,6 +1,6 @@
 <?php
 
-namespace Mimachh\Guardians\Models;
+namespace Mimachh\LikeIt\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
