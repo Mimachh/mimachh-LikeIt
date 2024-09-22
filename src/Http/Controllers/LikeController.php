@@ -7,26 +7,21 @@ use Illuminate\Routing\Controller;
 class LikeController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');  // Appliquer le middleware d'authentification à toutes les méthodes
-    }
-
     public function hasLike($type, $id)
     {
         $auth = auth()->user();
-
+    
         if (!$auth) {
             return response()->json(['hasLiked' => false], 401);
         }
 
         $model = $this->getModel($type, $id);
-
+        
         if (!$model) {
             return response()->json(['hasLiked' => false], 404);
         }
 
-        $hasLiked = $model->hasLike($auth->id());
+        $hasLiked = $model->hasLike($auth->id);
 
         return response()->json(['hasLiked' => $hasLiked]);
     }
@@ -74,8 +69,9 @@ class LikeController extends Controller
      */
     public function toggleLike($type, $id)
     {
+   
         $auth = auth()->user();
-     
+       
         $model = $this->getModel($type, $id);
         
         if (!$model) {
